@@ -1,0 +1,1 @@
+var cashier_installed_on_site=true;

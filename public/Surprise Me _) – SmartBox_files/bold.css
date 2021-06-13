@@ -1,0 +1,57 @@
+/* BOLD.CSS
+This File is used for Bold Custom App CSS only***
+To include this file in your theme, add the following before the closing </head> tag in theme.liquid:
+{{ 'bold.css' | asset_url | stylesheet_tag }}
+*/
+
+.bold_option_value_swatch{
+  width: 88px;
+  height: 88px;
+}
+
+.bold_option_title {
+    font-size: 16px;
+}
+
+/* .bold_option_value:hover .bold_option_swatch_title {
+    margin-bottom: .5em;
+    font-size: 14px;
+} */
+
+button.bold_cart_edit_button {
+    background: #aede1d;
+    color: #414042;
+    text-transform: uppercase;
+    font-family: 'Rokkitt', serif;
+    font-weight: bold;
+}
+
+.bold_option_swatch_title {
+    margin-top: 25px;
+    font-size: 16px;
+}
+
+
+
+.featured-collection .ro_widget .bold-ro__recurring-title, .template-collection .ro_widget .bold-ro__recurring-title {
+    display: none;
+}
+
+.featured-collection .bold-ro__one-time-div, .featured-collection .bold-ro__recurring-div{
+    margin: auto !important;
+    width: 80% !important;
+}
+.template-collection .bold-ro__one-time-div, .template-collection .bold-ro__recurring-div {
+    margin: auto;
+    width: 80% !important;
+}
+.featured-collection .bold-ro__radio-div.bold-ro__recurring-div.bold-ro__sub.bold-ro__bold-active, 
+.template-collection .bold-ro__radio-div.bold-ro__recurring-div.bold-ro__sub.bold-ro__bold-active {
+    margin-bottom: 20px !important;
+}
+
+
+.bold-ro__product {
+    max-width: 100% !important;
+    padding-bottom: 7px; !important;
+}
