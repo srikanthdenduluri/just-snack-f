@@ -1,5 +1,7 @@
 import React from "react";
 import "./SliderDiv.css";
+import { DataStore } from "@aws-amplify/datastore";
+import { Test } from "./models";
 
 export default function SliderDiv() {
   return (

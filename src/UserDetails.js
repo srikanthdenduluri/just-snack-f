@@ -1,6 +1,35 @@
 import React from "react";
+import { DataStore } from "@aws-amplify/datastore";
+import { Product, Subscribe } from "./models";
+import { useForm } from "react-hook-form";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
 
-export default function UserDetails() {
+function UserDetails() {
+  <br></br>;
+  <br></br>;
+  <br></br>;
+  <br></br>;
+  const product = { title: "hi bro", description: "you are good", cost: "500" };
+
+  // const myfunc = async () => {
+  //   const pr = await DataStore.save(new Subscribe(onSubmit.data));
+  //   console.log(pr);
+  // };
+  // const product = { title: "hi bro", description: "you are good", cost: "500" };
+
+  // const myfunc = async () => {
+  //   const temp = await DataStore.query(Product, (c) =>
+  //     c.title("eq", "srikanth")
+  //   );
+  //   console.log(temp);
+  // };
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = async (data) => {
+    console.log(data);
+    await DataStore.save(new Subscribe(data));
+  };
+
   return (
     <div>
       <br></br>
@@ -34,10 +63,12 @@ export default function UserDetails() {
                   <div class="form-group col-md-6">
                     <input
                       id="Full Name"
-                      name="Full Name"
                       placeholder="Full Name"
                       class="form-control"
                       type="text"
+                      {...register("full_name", {
+                        required: "Required",
+                      })}
                     ></input>
                   </div>
                   <div class="form-group col-md-6">
@@ -46,6 +77,9 @@ export default function UserDetails() {
                       class="form-control"
                       id="inputEmail4"
                       placeholder="Email"
+                      {...register("email", {
+                        required: "Required",
+                      })}
                     ></input>
                   </div>
                 </div>
@@ -53,15 +87,23 @@ export default function UserDetails() {
                   <div class="form-group col-md-6">
                     <input
                       id="Mobile No."
-                      name="Mobile No."
                       placeholder="Mobile No."
                       class="form-control"
                       required="required"
                       type="text"
+                      {...register("mobile", {
+                        required: "Required",
+                      })}
                     ></input>
                   </div>
                   <div class="form-group col-md-6">
-                    <select id="inputState" class="form-control">
+                    <select
+                      id="inputState"
+                      class="form-control"
+                      {...register("area", {
+                        required: "Required",
+                      })}
+                    >
                       <option selected>Choose ...</option>
                       <option> New Buyer</option>
                       <option> Auction</option>
@@ -72,10 +114,12 @@ export default function UserDetails() {
                   <div class="form-group col-md-12">
                     <textarea
                       id="comment"
-                      name="comment"
                       cols="40"
                       rows="5"
                       class="form-control"
+                      {...register("address", {
+                        required: "Required",
+                      })}
                     ></textarea>
                   </div>
                 </div>
@@ -102,9 +146,18 @@ export default function UserDetails() {
                 </div>
 
                 <div class="form-row">
-                  <button type="button" class="btn btn-danger">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    // onClick={myfunc}
+                    onClick={handleSubmit(onSubmit)}
+                  >
                     Submit
                   </button>
+                  <AmplifySignOut />
+                  {/* {product.map((product) => {
+                    <h1>product.title</h1>;
+                  })} */}
                 </div>
               </form>
             </div>
@@ -114,3 +167,5 @@ export default function UserDetails() {
     </div>
   );
 }
+
+export default withAuthenticator(UserDetails);

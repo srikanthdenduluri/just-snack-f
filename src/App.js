@@ -6,6 +6,7 @@ import SurpriseMe from "./SurpriseMe";
 import SliderDiv from "./SliderDiv";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Amplify from "aws-amplify";
 
 import "./App.css";
 import UserDetails from "./UserDetails";
