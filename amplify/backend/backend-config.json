@@ -1,9 +1,10 @@
 {
   "function": {
-    "test2": {
+    "test3": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": []
     }
   },
   "api": {
@@ -28,5 +29,12 @@
       }
     }
   },
-  "auth": {}
+  "auth": {
+    "justsnackfa6ff870e": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
 }

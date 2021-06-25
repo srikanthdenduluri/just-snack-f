@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "test2",
+            "test3",
             {
               "Fn::Join": [
                 "",
                 [
-                  "test2",
+                  "test3",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "justsnackfLambdaRoledddb62ad",
+            "justsnackfLambdaRole7b977f33",
             {
               "Fn::Join": [
                 "",
                 [
-                  "justsnackfLambdaRoledddb62ad",
+                  "justsnackfLambdaRole7b977f33",
                   "-",
                   {
                     "Ref": "env"

@@ -9,13 +9,17 @@
       "UnauthRoleName": "amplify-amplify897af4a99ca34-staging-153023-unauthRole",
       "StackName": "amplify-amplify897af4a99ca34-staging-153023",
       "StackId": "arn:aws:cloudformation:ap-south-1:608949631405:stack/amplify-amplify897af4a99ca34-staging-153023/45629c00-cc5c-11eb-808f-0684a2038bc2",
-      "AmplifyAppId": "d2wlop99pxcqja"
+      "AmplifyAppId": "d2wlop99pxcqja",
+      "AuthTriggerTemplateURL": ""
     },
     "categories": {
+      "auth": {
+        "justsnackfa6ff870e": {}
+      },
       "function": {
-        "test2": {
+        "test3": {
           "deploymentBucketName": "amplify-amplify897af4a99ca34-staging-153023-deployment",
-          "s3Key": "amplify-builds/test2-76796b454851626e5963-build.zip"
+          "s3Key": "amplify-builds/test3-58564641667152383337-build.zip"
         }
       }
     }
