@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@aws-amplify/core": "^4.1.1"
+  }
+}
