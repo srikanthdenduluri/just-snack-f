@@ -15,12 +15,6 @@
     "categories": {
       "auth": {
         "justsnackfa6ff870e": {}
-      },
-      "function": {
-        "test3": {
-          "deploymentBucketName": "amplify-amplify897af4a99ca34-staging-153023-deployment",
-          "s3Key": "amplify-builds/test3-58564641667152383337-build.zip"
-        }
       }
     }
   }

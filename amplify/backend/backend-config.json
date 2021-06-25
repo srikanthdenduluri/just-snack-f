@@ -1,12 +1,5 @@
 {
-  "function": {
-    "test3": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
-    }
-  },
+  "function": {},
   "api": {
     "justsnackf": {
       "service": "AppSync",
