@@ -1,8 +1,72 @@
 import React from "react";
 import "./SurpriseMe.css";
 import { Link } from "react-router-dom";
+import ModalImage from "react-modal-image";
+import { DataStore } from "@aws-amplify/datastore";
+import { Subscribe } from "./models";
+import { useState, useEffect, useRef } from "react";
+import { Auth } from "aws-amplify";
+import useCurrentUser from "./useCurrentUser";
+import Overlay from "react-bootstrap/Overlay";
 
-export default function surpriseMe() {
+import Tooltip from "react-bootstrap/Tooltip";
+
+function SurpriseMe() {
+  const userStatus = useCurrentUser();
+
+  const isLoggedIn = null !== userStatus;
+  const [isNoUser, setisNoUser] = useState(true);
+
+  const userslist = [];
+  const currentuser = [];
+  const [Data, setData] = useState({
+    full_name: "",
+    area: "",
+    email: "",
+    mobile: "",
+    address: "",
+  });
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
+  useEffect(() => {
+    async function myfunc() {
+      const temp = await DataStore.query(Subscribe, (c) =>
+        c.user_id("eq", Auth.user.username)
+      );
+      console.log("temp", temp);
+      userslist.push(temp);
+      console.log("userslist", userslist);
+      const cu = userslist[0][userslist[0].length - 1];
+      if (cu === undefined) {
+        console.log("error occured");
+        setisNoUser(true);
+        console.log("isNoUser", isNoUser);
+        return null;
+      } else {
+        setisNoUser(false);
+        console.log("isNoUser", isNoUser);
+      }
+
+      // console.log(userslist[userslist[0].length]);
+      // console.log(userslist[0][userslist[0].length - 1]);
+      currentuser.push(cu);
+      console.log("current user", currentuser);
+      console.log("current user", currentuser[0].area);
+      setData({
+        full_name: currentuser[0].full_name,
+        area: currentuser[0].area,
+        email: currentuser[0].email,
+        address: currentuser[0].address,
+        mobile: currentuser[0].mobile,
+      });
+
+      console.log(Auth.user.username);
+      // const addressNewValue = document.getElementById("addressId").value;
+      // console.log("addressNewValue", addressNewValue);
+    }
+    myfunc();
+  }, []);
+  console.log("isNoUser outside useeffect", isNoUser);
   return (
     <div>
       <main class="main-content" role="main">
@@ -22,7 +86,6 @@ export default function surpriseMe() {
                   data-extra-tab-content=""
                   data-enable-history-state="true"
                 >
-                  <br></br>
                   <br></br>
                   <div class="section-header section-header--breadcrumb">
                     <nav
@@ -256,203 +319,204 @@ export default function surpriseMe() {
                             ></img>
                           </noscript>
                         </div>
+                        <div class="w3-container">
+                          <ul
+                            class="product-single__thumbnails grid-uniform"
+                            id="ProductThumbs"
+                          >
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/Box_Surprise_grande.png"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/Box_Surprise_grande.png"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
 
-                        <ul
-                          class="product-single__thumbnails grid-uniform"
-                          id="ProductThumbs"
-                        >
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2094_grande.jpg"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2094_grande.jpg"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2059_grande.jpg"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2059_grande.jpg"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2073_grande.jpg"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2073_grande.jpg"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/box-vend_grande.png"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/box-vend_grande.png"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/Chevron_Citrus_Green_Bow_grande.png"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/Chevron_Citrus_Green_Bow_grande.png"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/Emoji_Red_Sheer_Ribbon_grande.png"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/Emoji_Red_Sheer_Ribbon_grande.png"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/459925e694f2fa324caeba431b532952_13368988-bfd4-4622-b2fb-289390295170_grande.jpg"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/459925e694f2fa324caeba431b532952_13368988-bfd4-4622-b2fb-289390295170_grande.jpg"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/b2529fd900726048f3ff85a9dd5305fa_f48a6541-6f40-4344-b525-c00288f6794a_grande.jpg"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/b2529fd900726048f3ff85a9dd5305fa_f48a6541-6f40-4344-b525-c00288f6794a_grande.jpg"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+
+                            <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+                              <ModalImage
+                                small={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2072_grande.jpg"
+                                }
+                                large={
+                                  "./Surprise Me _) – SmartBox_files/SB_Halloween-2072_grande.jpg"
+                                }
+                                hideDownload={true}
+                                hideZoom={true}
+                              />
+                            </li>
+                          </ul>
+
+                          <ul class="gallery">
+                            <li
                               data-image-id="6704531439703"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/Box_Surprise_1024x1024.png?v=1598464408"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/Box_Surprise_grande.png"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/Box_Surprise_1024x1024@2x.png?v=1598464408"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="13070917107799"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2094_1024x1024.jpg?v=1598464410"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/SB_Halloween-2094_grande.jpg"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2094_1024x1024@2x.jpg?v=1598464410"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="13070912389207"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2059_1024x1024.jpg?v=1598464410"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/SB_Halloween-2059_grande.jpg"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2059_1024x1024@2x.jpg?v=1598464410"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="13070923169879"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2073_1024x1024.jpg?v=1598464410"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/SB_Halloween-2073_grande.jpg"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2073_1024x1024@2x.jpg?v=1598464410"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="12817470783575"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/box-vend_1024x1024.png?v=1598464412"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/box-vend_grande.png"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/box-vend_1024x1024@2x.png?v=1598464412"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="13494125330519"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/Chevron_Citrus_Green_Bow_1024x1024.png?v=1598464412"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/Chevron_Citrus_Green_Bow_grande.png"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/Chevron_Citrus_Green_Bow_1024x1024@2x.png?v=1598464412"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="13472127844439"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/Emoji_Red_Sheer_Ribbon_1024x1024.png?v=1598464412"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/Emoji_Red_Sheer_Ribbon_grande.png"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/Emoji_Red_Sheer_Ribbon_1024x1024@2x.png?v=1598464412"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="14521834176599"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/459925e694f2fa324caeba431b532952_13368988-bfd4-4622-b2fb-289390295170_1024x1024.jpg?v=1598464414"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/459925e694f2fa324caeba431b532952_13368988-bfd4-4622-b2fb-289390295170_grande.jpg"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/459925e694f2fa324caeba431b532952_13368988-bfd4-4622-b2fb-289390295170_1024x1024@2x.jpg?v=1598464414"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="14521834209367"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/b2529fd900726048f3ff85a9dd5305fa_f48a6541-6f40-4344-b525-c00288f6794a_1024x1024.jpg?v=1598464415"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/b2529fd900726048f3ff85a9dd5305fa_f48a6541-6f40-4344-b525-c00288f6794a_grande.jpg"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/b2529fd900726048f3ff85a9dd5305fa_f48a6541-6f40-4344-b525-c00288f6794a_1024x1024@2x.jpg?v=1598464415"
+                            ></li>
 
-                          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                            <a
+                            <li
                               data-image-id="13070899478615"
-                              href="https://cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2072_1024x1024.jpg?v=1598464415"
-                              class="product-single__thumbnail"
-                            >
-                              <img
-                                src="./Surprise Me _) – SmartBox_files/SB_Halloween-2072_grande.jpg"
-                                alt="Surprise Me :)"
-                              ></img>
-                            </a>
-                          </li>
-                        </ul>
-
-                        <ul class="gallery">
-                          <li
-                            data-image-id="6704531439703"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/Box_Surprise_1024x1024@2x.png?v=1598464408"
-                          ></li>
-
-                          <li
-                            data-image-id="13070917107799"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2094_1024x1024@2x.jpg?v=1598464410"
-                          ></li>
-
-                          <li
-                            data-image-id="13070912389207"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2059_1024x1024@2x.jpg?v=1598464410"
-                          ></li>
-
-                          <li
-                            data-image-id="13070923169879"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2073_1024x1024@2x.jpg?v=1598464410"
-                          ></li>
-
-                          <li
-                            data-image-id="12817470783575"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/box-vend_1024x1024@2x.png?v=1598464412"
-                          ></li>
-
-                          <li
-                            data-image-id="13494125330519"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/Chevron_Citrus_Green_Bow_1024x1024@2x.png?v=1598464412"
-                          ></li>
-
-                          <li
-                            data-image-id="13472127844439"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/Emoji_Red_Sheer_Ribbon_1024x1024@2x.png?v=1598464412"
-                          ></li>
-
-                          <li
-                            data-image-id="14521834176599"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/459925e694f2fa324caeba431b532952_13368988-bfd4-4622-b2fb-289390295170_1024x1024@2x.jpg?v=1598464414"
-                          ></li>
-
-                          <li
-                            data-image-id="14521834209367"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/b2529fd900726048f3ff85a9dd5305fa_f48a6541-6f40-4344-b525-c00288f6794a_1024x1024@2x.jpg?v=1598464415"
-                          ></li>
-
-                          <li
-                            data-image-id="13070899478615"
-                            class="gallery__item"
-                            data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2072_1024x1024@2x.jpg?v=1598464415"
-                          ></li>
-                        </ul>
+                              class="gallery__item"
+                              data-mfp-src="//cdn.shopify.com/s/files/1/2616/9618/products/SB_Halloween-2072_1024x1024@2x.jpg?v=1598464415"
+                            ></li>
+                          </ul>
+                        </div>
                       </div>
                       <div class="grid__item post-large--one-half">
                         <h1 itemprop="name" class="SdevPrdTitle">
@@ -474,7 +538,7 @@ export default function surpriseMe() {
                               itemprop="price"
                               content="29.99"
                             >
-                              $29.99
+                              ₹ 2,999
                             </span>
 
                             <span
@@ -489,285 +553,74 @@ export default function surpriseMe() {
                               class="product-single__sale-price hide"
                             ></s>
                           </div>
-                          <form
-                            method="post"
-                            action="https://smartboxcompany.com/cart/add"
-                            id="product_form_1967822176343"
-                            accept-charset="UTF-8"
-                            class="product-form--wide"
-                            enctype="multipart/form-data"
+
+                          <input
+                            type="hidden"
+                            name="form_type"
+                            value="product"
+                          />
+
+                          <div class="product-single__quantity">
+                            <label for="Quantity">Quantity</label>
+                            <br></br>
+                            <div class="product-quantity-seloctor">
+                              <input
+                                type="button"
+                                value="-"
+                                class="qtyminus"
+                                field="quantity"
+                              />
+                              <input
+                                type="text"
+                                id="Quantity"
+                                name="quantity"
+                                value="1"
+                                min="1"
+                                class="qty-text"
+                                mm-min="1"
+                                step="1"
+                                mm-step="1"
+                              />
+                              <input
+                                type="button"
+                                value="+"
+                                class="qtyplus"
+                                field="quantity"
+                              />
+                            </div>
+                          </div>
+                          <div class="product-subscribe"></div>
+                          <span
+                            class="bold-ro__widget-loading"
+                            data-widget-loading=""
+                            style={{ display: "none" }}
                           >
-                            <input
-                              type="hidden"
-                              name="form_type"
-                              value="product"
-                            />
-                            <input type="hidden" name="utf8" value="✓" />
-                            <div
-                              class="selector-wrapper"
-                              style={{ display: "none" }}
-                            >
-                              <select
-                                class="single-option-selector"
-                                data-option="option1"
-                                id="ProductSelect-product-template-option-0"
-                              >
-                                <option value="Default Title">
-                                  Default Title
-                                </option>
-                              </select>
-                            </div>
-                            <select
-                              name="id"
-                              id="ProductSelect-product-template"
-                              class="product-single__variants"
-                              style={{ display: "none" }}
-                            >
-                              <option
-                                selected="selected"
-                                data-sku="151092315029"
-                                value="19634665750615"
-                              >
-                                Default Title - $29.99 USD
-                              </option>
-                            </select>
-
-                            <div class="product-single__quantity">
-                              <label for="Quantity">Quantity</label>
-                              <div class="product-quantity-seloctor">
-                                <input
-                                  type="button"
-                                  value="-"
-                                  class="qtyminus"
-                                  field="quantity"
-                                />
-                                <input
-                                  type="text"
-                                  id="Quantity"
-                                  name="quantity"
-                                  value="1"
-                                  min="1"
-                                  class="qty-text"
-                                  mm-min="1"
-                                  step="1"
-                                  mm-step="1"
-                                />
-                                <input
-                                  type="button"
-                                  value="+"
-                                  class="qtyplus"
-                                  field="quantity"
-                                />
-                              </div>
-                            </div>
-
-                            <div class="product-subscribe"></div>
-                            <span
-                              class="bold-ro__widget-loading"
-                              data-widget-loading=""
-                              style={{ display: "none" }}
-                            >
-                              <span class="bold-ro__loading-container">
-                                <div
-                                  data-bold-widget-loading-icon=""
-                                  class="bold-ro__widget-loading-icon"
-                                ></div>
-                              </span>
+                            <span class="bold-ro__loading-container">
+                              <div
+                                data-bold-widget-loading-icon=""
+                                class="bold-ro__widget-loading-icon"
+                              ></div>
                             </span>
-                            <div class="ro_widget">
-                              <div class="bold-ro__product bold-ro__product-id-1967822176343">
-                                <div class="bold-ro__recurring-title">
-                                  SUBSCRIBE &amp; SAVE 10% on delicious healthy
-                                  snacking - Use code 'FREESHIPPING' at checkout
-                                  for free shipping on your first purchase!
-                                </div>
-
-                                <div class="bold-ro__radio-div bold-ro__one-time-div bold-ro__bold-active">
-                                  <label class="bold-ro__recurring-lbl">
-                                    <input
-                                      type="radio"
-                                      value="0"
-                                      name="bold-ro__selector_radio_button"
-                                      class="bold-ro__one-time-radio-btn"
-                                      checked=""
-                                    />
-                                    <span class="bold-ro__one-time-purchase">
-                                      One Time Purchase
-                                    </span>
-                                  </label>
-                                </div>
-                                <div class="bold-ro__radio-div bold-ro__recurring-div  bold-ro__sub">
-                                  <label class="bold-ro__recurring-lbl">
-                                    <input
-                                      value="2"
-                                      name="bold-ro__selector_radio_button"
-                                      data-bold-recurring=""
-                                      class="bold-ro__mixed-radio-btn bold-ro__subscribe-radio-btn"
-                                      type="radio"
-                                    />
-
-                                    <span class="bold-ro__recurring-text ">
-                                      <b>
-                                        Subscribe &amp; Save{" "}
-                                        <span class="bold-ro__initial-discount-percent">
-                                          10%
-                                        </span>
-                                      </b>
-                                    </span>
-                                  </label>
-
-                                  <div class="bold-ro__frequency-div">
-                                    <div class="bold-ro__frequency-label">
-                                      <div
-                                        class="bold-ro__order-interval-container"
-                                        style={{ display: "none" }}
-                                      >
-                                        <span
-                                          id="bold-ro__order-interval-label"
-                                          class="bold-ro__order-interval-lbl"
-                                        >
-                                          Deliver every
-                                        </span>
-                                        <select
-                                          class="bold-ro__frequency-num"
-                                          name="frequency_num"
-                                          aria-labelledby="bold-ro__order-interval-label"
-                                        >
-                                          <option
-                                            data-frequency-num="1"
-                                            value="1"
-                                          >
-                                            1
-                                          </option>
-                                          <option
-                                            data-frequency-num="2"
-                                            value="2"
-                                          >
-                                            2
-                                          </option>
-                                          <option
-                                            data-frequency-num="3"
-                                            value="3"
-                                          >
-                                            3
-                                          </option>
-                                        </select>
-                                        <select
-                                          name="frequency_type"
-                                          class="bold-ro__frequency-type bold-ro__order-interval"
-                                          aria-labelledby="bold-ro__order-interval-label"
-                                        >
-                                          <option
-                                            data-frequency-type="2"
-                                            data-frequency-type-text="Week(s)"
-                                            value="2"
-                                          >
-                                            Week's
-                                          </option>
-                                          <option
-                                            data-frequency-type="3"
-                                            data-frequency-type-text="Month(s)"
-                                            value="3"
-                                          >
-                                            Month's
-                                          </option>
-                                        </select>
-                                      </div>
-                                      <input
-                                        name="frequency_type_text"
-                                        class="bold-ro__frequency-type-text"
-                                        type="hidden"
-                                        value=""
-                                      />
-
-                                      <input
-                                        name="group_id"
-                                        class="bold-ro__group-id"
-                                        type="hidden"
-                                        value="136787"
-                                      />
-                                      <input
-                                        type="hidden"
-                                        class="bold-ro__discounted-price"
-                                        value="$26.99"
-                                      />
-                                      <input
-                                        type="hidden"
-                                        class="bold-ro__discount-percentage"
-                                        value="10"
-                                      />
-                                      <input
-                                        type="hidden"
-                                        class="bold-ro__unformatted-price"
-                                        value="2699"
-                                      />
-                                      <input
-                                        type="hidden"
-                                        name="csrf_bold_token"
-                                        value="8a8e2e5632333f34c0cd4747e2566d31"
-                                      />
-
-                                      <input
-                                        type="hidden"
-                                        name="quantities[]"
-                                        value=""
-                                      />
-                                      <input
-                                        type="hidden"
-                                        name="product_id[]"
-                                        value=""
-                                      />
-                                      <input
-                                        type="hidden"
-                                        name="variant_id[]"
-                                        value=""
-                                      />
-                                      <input
-                                        type="hidden"
-                                        name="note"
-                                        value=""
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-                                <span class="bold-ro__see-details">
-                                  <a
-                                    href=""
-                                    class="bold-ro__detail-tooltip needsclick needsclick needsclick needsclick needsclick"
-                                  >
-                                    <strong>
-                                      More Details<strong></strong>
-                                    </strong>
-                                  </a>
-                                </span>
-                                <strong>
-                                  <strong></strong>
-                                </strong>
-                              </div>
-                            </div>
-
-                            <button
-                              class="btn button bold-ro__custombutton-1967822176343 bold_hidden"
-                              style={{ display: "none" }}
-                              data-event-queue-button="1"
-                            ></button>
-                            <button
-                              class="btn button bold-ro__custombutton-1967822176343 bold_clone"
-                              style={{ display: "none" }}
-                              data-event-queue-button="1"
-                            ></button>
-                            <button
-                              type="submit"
-                              name="add"
-                              id="AddToCart"
-                              class="btn AddToCart btn--initial cartbutton bold_hidden"
-                              style={{ visibility: "visible", display: "none" }}
-                              data-event-queue-button="0"
-                            >
-                              {/* <span id="AddToCartText" class="AddToCartText">
-                                Add to Cart
-                              </span> */}
-                            </button>
+                          </span>
+                          <button
+                            class="btn button bold-ro__custombutton-1967822176343 bold_hidden"
+                            style={{ display: "none" }}
+                            data-event-queue-button="1"
+                          ></button>
+                          <button
+                            class="btn button bold-ro__custombutton-1967822176343 bold_clone"
+                            style={{ display: "none" }}
+                            data-event-queue-button="1"
+                          ></button>
+                          <button
+                            type="submit"
+                            name="add"
+                            id="AddToCart"
+                            class="btn AddToCart btn--initial cartbutton bold_hidden"
+                            style={{ visibility: "visible", display: "none" }}
+                            data-event-queue-button="0"
+                          ></button>
+                          {isNoUser ? (
                             <Link to={"/details"}>
                               <button
                                 //type="submit"
@@ -783,8 +636,69 @@ export default function surpriseMe() {
                                 </span>
                               </button>
                             </Link>
+                          ) : (
+                            <div>
+                              <button
+                                //type="submit"
+                                //name="add"
+                                //id="AddToCart"
+                                ref={target}
+                                onClick={() => setShow(!show)}
+                                class="btn AddToCart btn--initial cartbutton bold_clone"
+                                style={{ visibility: "visible" }}
+                                data-event-queue-button="0"
+                              >
+                                Buy now not
+                              </button>
+                              <Overlay
+                                target={target.current}
+                                show={show}
+                                placement="right"
+                              >
+                                {(props) => (
+                                  <Tooltip id="overlay-example" {...props}>
+                                    You have already purchased one of our
+                                    product. You have to wait till your
+                                    subscription ends to buy another pack.
+                                  </Tooltip>
+                                )}
+                              </Overlay>
+                            </div>
+                          )}
+                          {/* {isNoUser ? (
+                                    <li>
+                                      <Nav.Link onClick={signOut}>
+                                        Sign Out
+                                      </Nav.Link>
+                                    </li>
+                                  ) : (
+                                    <li
+                                      style={{
+                                        backgroundColor:
+                                          "rgba(0,0,0,.5) !important",
+                                      }}
+                                    >
+                                      <Nav.Link>
+                                        <Link to={"/login"}>Sign In</Link>
+                                      </Nav.Link>
+                                    </li>
+                                  )} */}
+                          {/* <Link to={"/details"}>
+                              <button
+                                //type="submit"
+                                //name="add"
+                                //id="AddToCart"
 
-                            {/* <div
+                                class="btn AddToCart btn--initial cartbutton bold_clone"
+                                style={{ visibility: "visible" }}
+                                data-event-queue-button="0"
+                              >
+                                <span id="AddToCartText" class="AddToCartText">
+                                  Buy now
+                                </span>
+                              </button>
+                            </Link> */}
+                          {/* <div
                               class="bold_options bold_options_loaded"
                               data-product-id="1967822176343"
                             >
@@ -795,35 +709,20 @@ export default function surpriseMe() {
                                 <div class="bold_option bold_option_textarea bold_option_hidden"></div>
                               </div>
                             </div> */}
-
-                            <div
-                              class="bold_add_to_orders"
-                              style={{ display: "inline-block" }}
-                            ></div>
-
-                            {/* <div class="back-add-to-cart">
+                          <div
+                            class="bold_add_to_orders"
+                            style={{ display: "inline-block" }}
+                          ></div>
+                          {/* <div class="back-add-to-cart">
                               <a href="https://smartboxcompany.com/products/surprise">
                                 &lt; Back to{" "}
                               </a>
                             </div> */}
-                          </form>
 
                           <div
                             class="product-description rte"
                             itemprop="description"
                           >
-                            <p>
-                              <div class="video-wrapper">
-                                <iframe
-                                  title=""
-                                  src="./Surprise Me _) – SmartBox_files/cxU1r-SUky4.html"
-                                  width="953"
-                                  height="536"
-                                  frameborder="0"
-                                  allowfullscreen="allowfullscreen"
-                                ></iframe>
-                              </div>
-                            </p>
                             <p>
                               <span style={{ color: "#99cc00" }}>
                                 <strong>Description:</strong>
@@ -894,6 +793,18 @@ export default function surpriseMe() {
                               </a>
                               !
                             </p>
+                            <p>
+                              <div class="video-wrapper">
+                                <iframe
+                                  title=""
+                                  src="./Surprise Me _) – SmartBox_files/cxU1r-SUky4.html"
+                                  width="953"
+                                  height="536"
+                                  frameborder="0"
+                                  allowfullscreen="allowfullscreen"
+                                ></iframe>
+                              </div>
+                            </p>
                           </div>
 
                           <hr class="hr--clear hr--small" />
@@ -943,9 +854,7 @@ export default function surpriseMe() {
                   </div>
 
                   <hr class="hr--clear hr--small" />
-                  <div class="section-header section-header--medium">
-                    <h2 class="h4">More from this collection</h2>
-                  </div>
+
                   <div class="grid-uniform grid-link__container">
                     <div class="grid__item post-large--one-quarter medium--one-half small--one-half"></div>
 
@@ -964,3 +873,5 @@ export default function surpriseMe() {
     </div>
   );
 }
+
+export default SurpriseMe;

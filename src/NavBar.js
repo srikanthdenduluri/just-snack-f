@@ -1,12 +1,34 @@
 import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
+import useCurrentUser from "./useCurrentUser";
 import { Auth } from "aws-amplify";
 
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import { useHistory } from "react-router-dom";
+
 function NavBar() {
+  const userStatus = useCurrentUser();
+
+  const isLoggedIn = null !== userStatus;
+  const history = useHistory();
+
+  async function signOut() {
+    try {
+      await Auth.signOut();
+
+      history.push("/");
+    } catch (error) {
+      console.log("error signing out: ", error);
+    }
+  }
+  const signIn = null;
+
   return (
-    <div style={{ position: "absolute " }}>
+    <div style={{ position: "absolute" }}>
       <div id="shopify-section-header" class="shopify-section">
         {/* /*================= If logo is above navigation ================== */
         /*============ If logo is on the same line as navigation ============ */}
@@ -316,9 +338,6 @@ function NavBar() {
                     </a>
                   </li>
                   <li class="mobile-nav__link">
-                    <a>Log out</a>
-                  </li>
-                  <li class="mobile-nav__link">
                     <a
                       href="https://smartboxcompany.com/account/register"
                       id="customer_register_link"
@@ -348,47 +367,31 @@ function NavBar() {
                         />
                       </div>
                     </noscript>
-                    <div class="logo__image-wrapper supports-js">
-                      <a
-                        href="https://smartboxcompany.com/"
-                        itemprop="url"
-                        //   style={{paddingTop:99.79757085020242%}}
-                      >
-                        <img
-                          class="logo__image lazyautosizes lazyloaded"
-                          src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/color-upgrade-39_300x300.png"
-                          data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                          data-aspectratio="1.002028397565923"
-                          data-sizes="auto"
-                          alt="SmartBox"
-                          itemprop="logo"
-                          data-srcset="//cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_120x.png?v=1573177886 120w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_180x.png?v=1573177886 180w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_360x.png?v=1573177886 360w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_540x.png?v=1573177886 540w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_720x.png?v=1573177886 720w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_900x.png?v=1573177886 900w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1080x.png?v=1573177886 1080w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1296x.png?v=1573177886 1296w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1512x.png?v=1573177886 1512w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1728x.png?v=1573177886 1728w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1944x.png?v=1573177886 1944w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_2048x.png?v=1573177886 2048w"
-                          sizes="120px"
-                          srcset="//cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_120x.png?v=1573177886 120w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_180x.png?v=1573177886 180w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_360x.png?v=1573177886 360w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_540x.png?v=1573177886 540w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_720x.png?v=1573177886 720w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_900x.png?v=1573177886 900w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1080x.png?v=1573177886 1080w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1296x.png?v=1573177886 1296w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1512x.png?v=1573177886 1512w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1728x.png?v=1573177886 1728w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1944x.png?v=1573177886 1944w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_2048x.png?v=1573177886 2048w"
-                        ></img>
-                      </a>
-                    </div>
+                    <Link to={"/"}>
+                      <div class="logo__image-wrapper supports-js">
+                        <a
+                          href=""
+                          itemprop="url"
+                          //   style={{paddingTop:99.79757085020242%}}
+                        >
+                          <img
+                            class="logo__image lazyautosizes lazyloaded"
+                            src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/color-upgrade-39_300x300.png"
+                            data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                            data-aspectratio="1.002028397565923"
+                            data-sizes="auto"
+                            alt="SmartBox"
+                            itemprop="logo"
+                            data-srcset="//cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_120x.png?v=1573177886 120w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_180x.png?v=1573177886 180w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_360x.png?v=1573177886 360w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_540x.png?v=1573177886 540w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_720x.png?v=1573177886 720w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_900x.png?v=1573177886 900w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1080x.png?v=1573177886 1080w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1296x.png?v=1573177886 1296w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1512x.png?v=1573177886 1512w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1728x.png?v=1573177886 1728w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1944x.png?v=1573177886 1944w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_2048x.png?v=1573177886 2048w"
+                            sizes="120px"
+                            srcset="//cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_120x.png?v=1573177886 120w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_180x.png?v=1573177886 180w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_360x.png?v=1573177886 360w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_540x.png?v=1573177886 540w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_720x.png?v=1573177886 720w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_900x.png?v=1573177886 900w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1080x.png?v=1573177886 1080w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1296x.png?v=1573177886 1296w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1512x.png?v=1573177886 1512w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1728x.png?v=1573177886 1728w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_1944x.png?v=1573177886 1944w, //cdn.shopify.com/s/files/1/2616/9618/files/color-upgrade-39_2048x.png?v=1573177886 2048w"
+                          ></img>
+                        </a>
+                      </div>
+                    </Link>
                   </h1>
                 </div>
                 <div class="grid__item post-large--four-fifths post-large--display-table-cell">
-                  <div class="main-nav-social">
-                    <ul class="inline-list social-icons">
-                      <li>
-                        <a
-                          class="icon-fallback-text"
-                          href="https://www.instagram.com/lazy.people.memes/"
-                          title="SmartBox on Instagram"
-                        >
-                          <span
-                            class="icon icon-instagram"
-                            aria-hidden="true"
-                          ></span>
-                          <span class="fallback-text">Instagram</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
                   <div class="site-main-nav">
                     <nav>
                       <ul class="site-nav" id="AccessibleNav">
@@ -580,8 +583,12 @@ function NavBar() {
                         </ul>
                       </li> */}
 
-                        <li class="site-nav--has-dropdown" aria-haspopup="true">
-                          <a
+                        <li
+                          class="site-nav--has-dropdown "
+                          id="dropdown-autoclose-true"
+                          aria-haspopup="true"
+                        >
+                          {/* <a
                             //href="https://smartboxcompany.com/collections/smartbox-express"
                             class="site-nav__link"
                             data-meganav-type="parent"
@@ -622,10 +629,76 @@ function NavBar() {
                                 Build your Own!
                               </a>
                             </li>
-                          </ul>
+                          </ul> */}
+                          <Navbar expand="lg">
+                            <Container>
+                              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                              <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto">
+                                  <Nav.Link href="">About US</Nav.Link>
+                                  <Nav.Link href="">Contact</Nav.Link>
+                                  <Nav.Link>
+                                    {" "}
+                                    <Link to={"/myprofile"}> My Profile </Link>
+                                  </Nav.Link>
+
+                                  <NavDropdown
+                                    title="Packs"
+                                    id="basic-nav-dropdown"
+                                  >
+                                    <NavDropdown.Item>
+                                      <Link to={"/product1"}>Surprise Me </Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item>
+                                      <Link to={"/product1"}> Normal </Link>
+                                    </NavDropdown.Item>
+                                  </NavDropdown>
+
+                                  {isLoggedIn ? (
+                                    <li>
+                                      <Nav.Link onClick={signOut}>
+                                        Sign Out
+                                      </Nav.Link>
+                                    </li>
+                                  ) : (
+                                    <li
+                                      style={{
+                                        backgroundColor:
+                                          "rgba(0,0,0,.5) !important",
+                                      }}
+                                    >
+                                      <Nav.Link>
+                                        <Link to={"/login"}>Sign In</Link>
+                                      </Nav.Link>
+                                    </li>
+                                  )}
+
+                                  <div class="main-nav-social">
+                                    <ul class="inline-list social-icons">
+                                      <li>
+                                        <a
+                                          class="icon-fallback-text"
+                                          href="https://www.instagram.com/lazy.people.memes/"
+                                          title="SmartBox on Instagram"
+                                        >
+                                          <span
+                                            class="icon icon-instagram"
+                                            aria-hidden="true"
+                                          ></span>
+                                          <span class="fallback-text">
+                                            Instagram
+                                          </span>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </Nav>
+                              </Navbar.Collapse>
+                            </Container>
+                          </Navbar>
                         </li>
 
-                        <li class="site-nav--has-dropdown" aria-haspopup="true">
+                        {/* <li class="site-nav--has-dropdown" aria-haspopup="true">
                           <a
                             href="https://smartboxcompany.com/pages/about-us"
                             class="site-nav__link"
@@ -665,37 +738,35 @@ function NavBar() {
                                 Blog
                               </a>
                             </li>
-
-                            {/* <li>
+                          </ul>
+                        </li> */}
+                        {/* {isLoggedIn ? (
+                          <li>
                             <a
-                              href="https://smartboxcompany.com/pages/smartbox-faqs"
                               class="site-nav__link"
                               data-meganav-type="child"
-                              tabindex="-1"
+                              onClick={signOut}
                             >
-                              Frequently Asked Questions
+                              Sign Out
                             </a>
-                          </li> */}
-                          </ul>
-                        </li>
+                            
+                          </li>
+                        ) : (
+                          <li>
+                            <Link to={"/login"}>
+                              <a
+                                style={{ color: "#444544" }}
+                                class="site-nav__link"
+                                data-meganav-type="child"
+                              >
+                                Sign In
+                              </a>
+                             
+                            </Link>
+                          </li>
+                        )} */}
 
-                        <li>
-                          <a
-                            href="https://smartbox-express.com/account/login"
-                            class="site-nav__link"
-                            data-meganav-type="child"
-                          >
-                            Login
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="site-nav__link" data-meganav-type="child">
-                            Log out
-                          </a>
-                        </li>
-
-                        <li>
+                        {/* <li>
                           <a
                             href="https://smartboxcompany.com/pages/contact"
                             class="site-nav__link"
@@ -703,7 +774,7 @@ function NavBar() {
                           >
                             Contact
                           </a>
-                        </li>
+                        </li> */}
                       </ul>
                     </nav>
                   </div>

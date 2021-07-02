@@ -7,3 +7,24 @@
     text-align: right !important;
   }
 }
+.navbar-dark .navbar-nav .nav-link {
+  /* color: #aede1d !important; */
+  color: #444544 !important;
+}
+/* .bg-light {
+  background-color: #aede1d !important;
+} */
+/* .uk-link,
+a {
+  color: red;
+}
+.dropdown-menu {
+  background-color: black !important;
+} */
+.navbar-light .navbar-nav .nav-link .nav-a {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.toast {
+  position: fixed !important;
+}

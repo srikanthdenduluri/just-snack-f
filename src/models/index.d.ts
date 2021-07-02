@@ -37,10 +37,16 @@ export declare class Subscribe {
   readonly mobile?: string;
   readonly area?: string;
   readonly address?: string;
-  readonly user_id?: number;
+  readonly user_id?: string;
   readonly product_id?: number;
   readonly date_added?: string;
   readonly date_modified?: string;
+  readonly balance?: number;
+  readonly is_purchased?: boolean;
+  readonly number_of_products?: number;
+  readonly daily_cost?: number;
+  readonly product_name?: string;
+  readonly landmark?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Subscribe>);

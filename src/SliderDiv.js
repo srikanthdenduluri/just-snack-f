@@ -1,13 +1,86 @@
 import React from "react";
 import "./SliderDiv.css";
-import { DataStore } from "@aws-amplify/datastore";
-import { Test } from "./models";
+import "./Carousel.css";
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
+import "react-awesome-slider/dist/styles.css";
+import "react-awesome-slider/dist/captioned.css";
+import "react-awesome-slider/dist/custom-animations/cube-animation.css";
+import withAutoplay from "react-awesome-slider/dist/autoplay";
+import AwesomeSliderStyles from "react-awesome-slider/src/styles";
+import img1 from "./Images/img1.jpg";
+import img2 from "./Images/img2.jpg";
+import img3 from "./Images/img3.jpg";
+import img4 from "./Images/img4.jpg";
+import img5 from "./Images/img5.jpg";
+import { Link } from "react-router-dom";
 
 export default function SliderDiv() {
+  const buttonStyle = {
+    padding: "15px",
+    opacity: 0.7,
+    fontSize: "1%",
+  };
+  const contentStyle = {
+    color: "black",
+    fontSize: "20px",
+  };
+  const bgImg = {
+    position: "absolute",
+    zIndex: -1,
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "100%",
+  };
+  const AutoplaySlider = withAutoplay(AwesomeSlider);
   return (
     <div>
       <main class="main-content" role="main">
-        <div id="shopify-section-1576090947829" class="shopify-section">
+        <div className="totcss">
+          <AutoplaySlider
+            cssModule={AwesomeSliderStyles}
+            className="mobilecss"
+            animation="cubeAnimation"
+            buttonContentRight={<p style={buttonStyle}>{">"}</p>}
+            buttonContentLeft={<p style={buttonStyle}>{"<"}</p>}
+            play
+            // customContent={<p style={contentStyle}>{"I am the content/text"}</p>}
+            interval={4000}
+          >
+            <div style={{ zIndex: 1 }}>
+              <div>
+                <img style={bgImg} alt="Wow" src={img5} />
+                <h1>Microsoft</h1>
+                <h2>Nice to see you</h2>
+                <button> Click Me </button>
+              </div>
+            </div>
+            <div style={{ zIndex: 1 }}>
+              <div>
+                <img style={bgImg} alt="Wow" src={img2} />
+                <h1>Microsoft 2</h1>
+                <h2>Nice to see you</h2>
+              </div>
+            </div>
+            <div style={{ zIndex: 1 }}>
+              <div>
+                <img style={bgImg} alt="Wow" src={img3} />
+                <h1>Microsoft 2</h1>
+                <h2>Nice to see you</h2>
+              </div>
+            </div>
+            <div style={{ zIndex: 1 }}>
+              <div>
+                <img style={bgImg} alt="Wow" src={img4} />
+                <h1>Microsoft 2</h1>
+                <h2>Nice to see you</h2>
+              </div>
+            </div>
+          </AutoplaySlider>
+        </div>
+
+        {/* <div id="shopify-section-1576090947829" class="shopify-section">
           <div class="slider-section slider_half_half ">
             <div
               class="flexslider"
@@ -191,404 +264,6 @@ export default function SliderDiv() {
                       </div>
                     </div>
                   </li>
-
-                  {/* <li
-                  id="slide--1596558578243"
-                  class="slider-item-1596558578243 flex-active-slide"
-                  data-flexslider-index="2"
-                  data-thumb-alt=""
-                  style={{
-                    width: "734px",
-                    marginright: "0px",
-                    float: "left",
-                    display: "block",
-                  }}
-                >
-                  <div class="silder-item">
-                    <div class="flex-caption-overlay-x">
-                      <div class="overlay-content-wrapper">
-                        <div class="wrapper">
-                          <div class="grid">
-                            <div class="grid__item">
-                              <div class="page-width feature-row">
-                                <div class="feature-row">
-                                  <div class="feature-row__item--text-1596558578243 feature-row__text feature-row__text--right">
-                                    <div class="feature-row-text-inner">
-                                      <h2
-                                        class="header-title"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <img
-                                          src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Monthly_Campains-47_0886f679-b36c-4573-9263-496c6425d4d2.png"
-                                          draggable="false"
-                                          alt=""
-                                        ></img>
-                                      </h2>
-
-                                      <div
-                                        class="rte featured-row__subtext"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <h3>
-                                          Stock up with 33 snacks<br></br>in our
-                                          large family box!
-                                        </h3>
-                                      </div>
-
-                                      <a
-                                        class="custom-btn"
-                                        href="https://smartboxcompany.com/products/family-box-1"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        Shop this box
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="feature-row__item-1596558578243">
-                                    <div class="feature-row__image-wrapper">
-                                      <img
-                                        class="desktop-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Monthly_Campains-59_72cf117a-c17e-466d-b84e-2e69304ff2a5.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                      <img
-                                        class="mobile-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Monthly_Campains-60_2d99c24a-9e87-4220-8409-1b5f5dabae15.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li> */}
-
-                  {/* <li
-                  id="slide--1599078316830"
-                  class="slider-item-1599078316830 slide-hide"
-                  data-flexslider-index="3"
-                  data-thumb-alt=""
-                  style={{
-                    width: "734px",
-                    marginright: "0px",
-                    float: "left",
-                    display: "block",
-                  }}
-                >
-                  <div class="silder-item">
-                    <div class="flex-caption-overlay-x">
-                      <div class="overlay-content-wrapper">
-                        <div class="wrapper">
-                          <div class="grid">
-                            <div class="grid__item">
-                              <div class="page-width feature-row">
-                                <div class="feature-row">
-                                  <div class="feature-row__item--text-1599078316830 feature-row__text feature-row__text--right">
-                                    <div class="feature-row-text-inner">
-                                      <h2
-                                        class="header-title"
-                                        style={{ color: "#5e5e5e" }}
-                                      >
-                                        <align>
-                                          <img
-                                            src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/foracause-34.png"
-                                            draggable="false"
-                                            alt=""
-                                          ></img>
-                                        </align>
-                                      </h2>
-
-                                      <div
-                                        class="rte featured-row__subtext"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <h3>Give back while you snack!</h3>
-                                      </div>
-
-                                      <a
-                                        class="custom-btn"
-                                        href="https://smartboxcompany.com/products/snack-for-a-good-cause"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        The Cause Box
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="feature-row__item-1599078316830">
-                                    <div class="feature-row__image-wrapper">
-                                      <img
-                                        class="desktop-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/foracause-09.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                      <img
-                                        class="mobile-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/foracause-10.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li
-                  id="slide--1576090947829-0"
-                  class="slider-item-1576090947829-0 slide-hide"
-                  data-flexslider-index="7"
-                  data-thumb-alt=""
-                  style={{
-                    width: "734px",
-                    marginright: "0px",
-                    float: "left",
-                    display: "block",
-                  }}
-                >
-                  <div class="silder-item">
-                    <div class="flex-caption-overlay-x">
-                      <div class="overlay-content-wrapper">
-                        <div class="wrapper">
-                          <div class="grid">
-                            <div class="grid__item">
-                              <div class="page-width feature-row">
-                                <div class="feature-row">
-                                  <div class="feature-row__item--text-1576090947829-0 feature-row__text feature-row__text--right">
-                                    <div class="feature-row-text-inner">
-                                      <h2
-                                        class="header-title"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <img
-                                          src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/sb_logo-95.png"
-                                          draggable="false"
-                                          alt=""
-                                        ></img>
-                                      </h2>
-
-                                      <div
-                                        class="rte featured-row__subtext"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <h3>
-                                          Subscribe and Save 10%<br></br>on
-                                          delicious healthy snacking!
-                                        </h3>
-                                      </div>
-
-                                      <a
-                                        class="custom-btn"
-                                        href="https://smartboxcompany.com/collections/smartbox-express"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        Shop Now
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="feature-row__item-1576090947829-0">
-                                    <div class="feature-row__image-wrapper">
-                                      <img
-                                        class="desktop-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/basic-59.jpg"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                      <img
-                                        class="mobile-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/basic-60.jpg"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <style></style>
-
-                <li
-                  id="slide--1576166213510"
-                  class="slider-item-1576166213510 slide-hide"
-                  data-flexslider-index="9"
-                  data-thumb-alt=""
-                  style={{
-                    width: "734px",
-                    marginright: "0px",
-                    float: "left",
-                    display: "block",
-                  }}
-                >
-                  <div class="silder-item">
-                    <div class="flex-caption-overlay-x">
-                      <div class="overlay-content-wrapper">
-                        <div class="wrapper">
-                          <div class="grid">
-                            <div class="grid__item">
-                              <div class="page-width feature-row">
-                                <div class="feature-row">
-                                  <div class="feature-row__item--text-1576166213510 feature-row__text feature-row__text--right">
-                                    <div class="feature-row-text-inner">
-                                      <h2
-                                        class="header-title"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <img
-                                          src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Express_Sliders-11_16522734-788c-48d8-a22f-aae8ec40c9c2.png"
-                                          draggable="false"
-                                          alt=""
-                                        ></img>
-                                      </h2>
-
-                                      <div
-                                        class="rte featured-row__subtext"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <h3>
-                                          Leave your employees &amp; <br></br>
-                                          clients a lasting impression!
-                                        </h3>
-                                      </div>
-
-                                      <a
-                                        class="custom-btn"
-                                        href="https://smartboxcompany.com/pages/smartbox-for-business"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        Corporate Gifts
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="feature-row__item-1576166213510">
-                                    <div class="feature-row__image-wrapper">
-                                      <img
-                                        class="desktop-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Express_Sliders-07_9c791050-bc52-4679-a26e-368bf13ac57a.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                      <img
-                                        class="mobile-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Express_Sliders-11_0400345c-f343-4f6a-bfd0-5c8c4a475308.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <style></style>
-
-                <li
-                  id="slide--1601391185848_clone"
-                  class="slider-item-1601391185848 clone slide-hide"
-                  data-flexslider-index="1"
-                  style={{
-                    width: "734px",
-                    marginright: "0px",
-                    float: "left",
-                    display: "block",
-                  }}
-                  aria-hidden="true"
-                >
-                  <div class="silder-item">
-                    <div class="flex-caption-overlay-x">
-                      <div class="overlay-content-wrapper">
-                        <div class="wrapper">
-                          <div class="grid">
-                            <div class="grid__item">
-                              <div class="page-width feature-row">
-                                <div class="feature-row">
-                                  <div class="feature-row__item--text-1601391185848 feature-row__text feature-row__text--right">
-                                    <div class="feature-row-text-inner">
-                                      <h2
-                                        class="header-title"
-                                        style={{ color: "#000000" }}
-                                      >
-                                        <img
-                                          src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Monthly_Campains-24_c88c351b-497b-4b4b-b6e3-64f37e321422.png"
-                                          draggable="false"
-                                          alt=""
-                                        ></img>
-                                      </h2>
-
-                                      <div
-                                        class="rte featured-row__subtext"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        <h3>
-                                          Our vegan box gives 10%<br></br> to
-                                          plant trees all April long!
-                                        </h3>
-                                      </div>
-
-                                      <a
-                                        class="custom-btn"
-                                        href="https://smartboxcompany.com/collections/vegan"
-                                        style={{ color: "#ffffff" }}
-                                      >
-                                        Shop Now!
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="feature-row__item-1601391185848">
-                                    <div class="feature-row__image-wrapper">
-                                      <img
-                                        class="desktop-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Monthly_Campains-88_7920bdc4-6edc-4139-aaca-afd0f9b3c74b.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                      <img
-                                        class="mobile-feature-row-image"
-                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/Monthly_Campains-89_aac51cc5-965b-4ea1-98b0-f70e5f767cf7.png"
-                                        alt=""
-                                        draggable="false"
-                                      ></img>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li> */}
                 </ul>
               </div>
               <ol class="flex-control-nav flex-control-paging">
@@ -602,21 +277,6 @@ export default function SliderDiv() {
                     2
                   </a>
                 </li>
-                {/* <li class="slide-hide">
-                <a href="https://smartboxcompany.com/#" class="">
-                  3
-                </a>
-              </li>
-              <li class="slide-hide">
-                <a href="https://smartboxcompany.com/#" class="">
-                  4
-                </a>
-              </li>
-              <li class="slide-hide">
-                <a href="https://smartboxcompany.com/#" class="">
-                  5
-                </a>
-              </li> */}
               </ol>
               <ul class="flex-direction-nav">
                 <li class="flex-nav-prev slide-hide">
@@ -632,7 +292,7 @@ export default function SliderDiv() {
               </ul>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* ----------------------------------------------------------------------- */}
         <div
           id="shopify-section-1549183561497"
@@ -680,8 +340,8 @@ export default function SliderDiv() {
                       <div class="feature-row__item  feature-row-item-text-1549183561497 feature-row__text feature-row__text--left">
                         <div class="rte featured-row__subtext">
                           <p>
-                            <strong>SmartBox Express</strong> delivers the
-                            highest quality healthy snacks, with only the finest
+                            <strong>JustSnack</strong> delivers the highest
+                            quality healthy snacks, with only the finest
                             ingredients, so you can eat smarter on-the-go. Save
                             time and money with a snack subscription today!
                           </p>
@@ -713,205 +373,120 @@ export default function SliderDiv() {
                     data-section-type="featured-products-section"
                   >
                     <div class="section-header section-header--small text-center">
-                      <h2 class="header-title">Shop Themed Boxes:</h2>
+                      <h2 class="header-title">Packs:</h2>
                     </div>
 
                     <div class="grid-uniform">
                       <div class="grid__item medium-down--one-half post-large--one-quarter">
                         <div class="product-item ">
-                          <a
-                            href="https://smartboxcompany.com/products/snack-for-a-good-cause"
-                            class="grid-link text-center"
-                          >
-                            <span
-                              class="grid-link__image grid-link__image--product"
-                              style={{ height: "297px" }}
+                          <Link to={"/product1"}>
+                            <a
+                              // href="https://smartboxcompany.com/products/snack-for-a-good-cause"
+                              class="grid-link text-center"
                             >
-                              <span class="grid-link__image-centered">
-                                <style></style>
+                              <span
+                                class="grid-link__image grid-link__image--product"
+                                style={{ height: "297px" }}
+                              >
+                                <span class="grid-link__image-centered">
+                                  <style></style>
 
-                                <div
-                                  id="ProductImageWrapper-14844243214423"
-                                  class="product__img-wrapper supports-js"
-                                >
-                                  <div style={{ paddingTop: "99.951171875%" }}>
-                                    <img
-                                      id="ProductImage-14844243214423"
-                                      class="product__img lazyautosizes lazyloaded"
-                                      src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/8ffa658337e345efe4e640c0f4072646_300x300.png"
-                                      data-widths="[150, 220, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
-                                      data-aspectratio="1.0004885197850513"
-                                      data-sizes="auto"
-                                      alt="NEW! Snacks for a Cause"
-                                      data-srcset="//cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_150x.png?v=1608065747 150w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_220x.png?v=1608065747 220w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_360x.png?v=1608065747 360w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_470x.png?v=1608065747 470w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_600x.png?v=1608065747 600w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_750x.png?v=1608065747 750w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_940x.png?v=1608065747 940w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1080x.png?v=1608065747 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1296x.png?v=1608065747 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1512x.png?v=1608065747 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1728x.png?v=1608065747 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_2048x.png?v=1608065747 2048w"
-                                      sizes="322px"
-                                      srcset="//cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_150x.png?v=1608065747 150w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_220x.png?v=1608065747 220w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_360x.png?v=1608065747 360w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_470x.png?v=1608065747 470w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_600x.png?v=1608065747 600w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_750x.png?v=1608065747 750w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_940x.png?v=1608065747 940w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1080x.png?v=1608065747 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1296x.png?v=1608065747 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1512x.png?v=1608065747 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1728x.png?v=1608065747 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_2048x.png?v=1608065747 2048w"
-                                    ></img>
-                                  </div>
-                                </div>
-
-                                <noscript>
-                                  <img
-                                    src="//cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_large.png?v=1608065747"
-                                    alt="NEW! Snacks for a Cause"
-                                    class="product__img"
-                                  ></img>
-                                </noscript>
-                              </span>
-                            </span>
-                            <p class="grid-link__title devPrdTitle">
-                              NEW! Snacks for a Cause
-                            </p>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div class="grid__item medium-down--one-half post-large--one-quarter">
-                        <div class="product-item ">
-                          <a
-                            href="https://smartboxcompany.com/products/family-box-1"
-                            class="grid-link text-center"
-                          >
-                            <span
-                              class="grid-link__image grid-link__image--product"
-                              style={{ height: "297px" }}
-                            >
-                              <span class="grid-link__image-centered">
-                                <style></style>
-
-                                <div
-                                  id="ProductImageWrapper-11142864535639"
-                                  class="product__img-wrapper supports-js"
-                                >
                                   <div
-                                    style={{ paddingTop: "99.95975855130786%" }}
+                                    id="ProductImageWrapper-14844243214423"
+                                    class="product__img-wrapper supports-js"
                                   >
+                                    <div
+                                      style={{ paddingTop: "99.951171875%" }}
+                                    >
+                                      <img
+                                        id="ProductImage-14844243214423"
+                                        class="product__img lazyautosizes lazyloaded"
+                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/8ffa658337e345efe4e640c0f4072646_300x300.png"
+                                        data-widths="[150, 220, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+                                        data-aspectratio="1.0004885197850513"
+                                        data-sizes="auto"
+                                        alt="NEW! Snacks for a Cause"
+                                        data-srcset="//cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_150x.png?v=1608065747 150w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_220x.png?v=1608065747 220w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_360x.png?v=1608065747 360w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_470x.png?v=1608065747 470w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_600x.png?v=1608065747 600w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_750x.png?v=1608065747 750w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_940x.png?v=1608065747 940w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1080x.png?v=1608065747 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1296x.png?v=1608065747 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1512x.png?v=1608065747 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1728x.png?v=1608065747 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_2048x.png?v=1608065747 2048w"
+                                        sizes="322px"
+                                        srcset="//cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_150x.png?v=1608065747 150w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_220x.png?v=1608065747 220w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_360x.png?v=1608065747 360w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_470x.png?v=1608065747 470w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_600x.png?v=1608065747 600w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_750x.png?v=1608065747 750w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_940x.png?v=1608065747 940w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1080x.png?v=1608065747 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1296x.png?v=1608065747 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1512x.png?v=1608065747 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_1728x.png?v=1608065747 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_2048x.png?v=1608065747 2048w"
+                                      ></img>
+                                    </div>
+                                  </div>
+
+                                  <noscript>
+                                    <Link to={"/product1"}>
+                                      <img
+                                        src="//cdn.shopify.com/s/files/1/2616/9618/products/8ffa658337e345efe4e640c0f4072646_large.png?v=1608065747"
+                                        alt="NEW! Snacks for a Cause"
+                                        class="product__img"
+                                      ></img>
+                                    </Link>
+                                  </noscript>
+                                </span>
+                              </span>
+                              <p class="grid-link__title devPrdTitle">
+                                Surprise Me
+                              </p>
+                            </a>
+                          </Link>
+                        </div>
+                      </div>
+
+                      <div class="grid__item medium-down--one-half post-large--one-quarter">
+                        <div class="product-item ">
+                          <Link to={"/product2"}>
+                            <a
+                              // href="https://smartboxcompany.com/products/family-box-1"
+                              class="grid-link text-center"
+                            >
+                              <span
+                                class="grid-link__image grid-link__image--product"
+                                style={{ height: "297px" }}
+                              >
+                                <span class="grid-link__image-centered">
+                                  <style></style>
+
+                                  <div
+                                    id="ProductImageWrapper-11142864535639"
+                                    class="product__img-wrapper supports-js"
+                                  >
+                                    <div
+                                      style={{
+                                        paddingTop: "99.95975855130786%",
+                                      }}
+                                    >
+                                      <img
+                                        id="ProductImage-11142864535639"
+                                        class="product__img lazyautosizes lazyloaded"
+                                        src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/box_images-09_300x300.png"
+                                        data-widths="[150, 220, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+                                        data-aspectratio="1.000402576489533"
+                                        data-sizes="auto"
+                                        alt="Family Box"
+                                        data-srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_150x.png?v=1598458057 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_220x.png?v=1598458057 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_360x.png?v=1598458057 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_470x.png?v=1598458057 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_600x.png?v=1598458057 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_750x.png?v=1598458057 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_940x.png?v=1598458057 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1080x.png?v=1598458057 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1296x.png?v=1598458057 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1512x.png?v=1598458057 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1728x.png?v=1598458057 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_2048x.png?v=1598458057 2048w"
+                                        sizes="322px"
+                                        srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_150x.png?v=1598458057 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_220x.png?v=1598458057 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_360x.png?v=1598458057 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_470x.png?v=1598458057 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_600x.png?v=1598458057 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_750x.png?v=1598458057 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_940x.png?v=1598458057 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1080x.png?v=1598458057 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1296x.png?v=1598458057 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1512x.png?v=1598458057 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1728x.png?v=1598458057 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_2048x.png?v=1598458057 2048w"
+                                      ></img>
+                                    </div>
+                                  </div>
+
+                                  <noscript>
                                     <img
-                                      id="ProductImage-11142864535639"
-                                      class="product__img lazyautosizes lazyloaded"
-                                      src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/box_images-09_300x300.png"
-                                      data-widths="[150, 220, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
-                                      data-aspectratio="1.000402576489533"
-                                      data-sizes="auto"
+                                      src="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_large.png?v=1598458057"
                                       alt="Family Box"
-                                      data-srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_150x.png?v=1598458057 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_220x.png?v=1598458057 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_360x.png?v=1598458057 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_470x.png?v=1598458057 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_600x.png?v=1598458057 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_750x.png?v=1598458057 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_940x.png?v=1598458057 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1080x.png?v=1598458057 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1296x.png?v=1598458057 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1512x.png?v=1598458057 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1728x.png?v=1598458057 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_2048x.png?v=1598458057 2048w"
-                                      sizes="322px"
-                                      srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_150x.png?v=1598458057 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_220x.png?v=1598458057 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_360x.png?v=1598458057 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_470x.png?v=1598458057 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_600x.png?v=1598458057 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_750x.png?v=1598458057 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_940x.png?v=1598458057 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1080x.png?v=1598458057 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1296x.png?v=1598458057 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1512x.png?v=1598458057 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_1728x.png?v=1598458057 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_2048x.png?v=1598458057 2048w"
+                                      class="product__img"
                                     ></img>
-                                  </div>
-                                </div>
-
-                                <noscript>
-                                  <img
-                                    src="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-09_large.png?v=1598458057"
-                                    alt="Family Box"
-                                    class="product__img"
-                                  ></img>
-                                </noscript>
+                                  </noscript>
+                                </span>
                               </span>
-                            </span>
-                            <p class="grid-link__title devPrdTitle">
-                              Family Box
-                            </p>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div class="grid__item medium-down--one-half post-large--one-quarter">
-                        <div class="product-item ">
-                          <a
-                            href="https://smartboxcompany.com/products/indulgence-boxes"
-                            class="grid-link text-center"
-                          >
-                            <span
-                              class="grid-link__image grid-link__image--product"
-                              style={{ height: "297px" }}
-                            >
-                              <span class="grid-link__image-centered">
-                                <style></style>
-
-                                <div
-                                  id="ProductImageWrapper-11142864863319"
-                                  class="product__img-wrapper supports-js"
-                                >
-                                  <div style={{ paddingTop: "100.0%" }}>
-                                    <img
-                                      id="ProductImage-11142864863319"
-                                      class="product__img lazyautosizes lazyloaded"
-                                      src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/box_images-07_300x300.png"
-                                      data-widths="[150, 220, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
-                                      data-aspectratio="1.0"
-                                      data-sizes="auto"
-                                      alt="Celebration Box"
-                                      data-srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_150x.png?v=1598457976 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_220x.png?v=1598457976 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_360x.png?v=1598457976 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_470x.png?v=1598457976 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_600x.png?v=1598457976 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_750x.png?v=1598457976 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_940x.png?v=1598457976 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1080x.png?v=1598457976 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1296x.png?v=1598457976 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1512x.png?v=1598457976 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1728x.png?v=1598457976 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_2048x.png?v=1598457976 2048w"
-                                      sizes="322px"
-                                      srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_150x.png?v=1598457976 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_220x.png?v=1598457976 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_360x.png?v=1598457976 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_470x.png?v=1598457976 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_600x.png?v=1598457976 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_750x.png?v=1598457976 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_940x.png?v=1598457976 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1080x.png?v=1598457976 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1296x.png?v=1598457976 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1512x.png?v=1598457976 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_1728x.png?v=1598457976 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_2048x.png?v=1598457976 2048w"
-                                    ></img>
-                                  </div>
-                                </div>
-
-                                <noscript>
-                                  <img
-                                    src="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-07_large.png?v=1598457976"
-                                    alt="Celebration Box"
-                                    class="product__img"
-                                  ></img>
-                                </noscript>
-                              </span>
-                            </span>
-                            <p class="grid-link__title devPrdTitle">
-                              Celebration Box
-                            </p>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div class="grid__item medium-down--one-half post-large--one-quarter">
-                        <div class="product-item ">
-                          <a
-                            href="https://smartboxcompany.com/products/fitness-box-1"
-                            class="grid-link text-center"
-                          >
-                            <span
-                              class="grid-link__image grid-link__image--product"
-                              style={{ height: "297px" }}
-                            >
-                              <span class="grid-link__image-centered">
-                                <style></style>
-
-                                <div
-                                  id="ProductImageWrapper-11142864437335"
-                                  class="product__img-wrapper supports-js"
-                                >
-                                  <div style={{ paddingTop: "100.0%" }}>
-                                    <img
-                                      id="ProductImage-11142864437335"
-                                      class="product__img lazyautosizes lazyloaded"
-                                      src="./Healthy Snacks Delivered to You _ Corporate Gifts _ Subscription Box – SmartBox_files/box_images-04_300x300.png"
-                                      data-widths="[150, 220, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
-                                      data-aspectratio="1.0"
-                                      data-sizes="auto"
-                                      alt="Fitness Box"
-                                      data-srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_150x.png?v=1598461920 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_220x.png?v=1598461920 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_360x.png?v=1598461920 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_470x.png?v=1598461920 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_600x.png?v=1598461920 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_750x.png?v=1598461920 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_940x.png?v=1598461920 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1080x.png?v=1598461920 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1296x.png?v=1598461920 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1512x.png?v=1598461920 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1728x.png?v=1598461920 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_2048x.png?v=1598461920 2048w"
-                                      sizes="322px"
-                                      srcset="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_150x.png?v=1598461920 150w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_220x.png?v=1598461920 220w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_360x.png?v=1598461920 360w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_470x.png?v=1598461920 470w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_600x.png?v=1598461920 600w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_750x.png?v=1598461920 750w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_940x.png?v=1598461920 940w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1080x.png?v=1598461920 1080w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1296x.png?v=1598461920 1296w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1512x.png?v=1598461920 1512w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_1728x.png?v=1598461920 1728w, //cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_2048x.png?v=1598461920 2048w"
-                                    ></img>
-                                  </div>
-                                </div>
-
-                                <noscript>
-                                  <img
-                                    src="//cdn.shopify.com/s/files/1/2616/9618/products/box_images-04_large.png?v=1598461920"
-                                    alt="Fitness Box"
-                                    class="product__img"
-                                  ></img>
-                                </noscript>
-                              </span>
-                            </span>
-                            <p class="grid-link__title devPrdTitle">
-                              Fitness Box
-                            </p>
-                          </a>
+                              <p
+                                class="grid-link__title devPrdTitle"
+                                style={{}}
+                              >
+                                Normal
+                              </p>
+                            </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -993,7 +568,7 @@ export default function SliderDiv() {
           </div>
         </div>
         {/* -------------------------------------------------------------------------------------- */}
-        <div class="newsletter-footer">
+        {/* <div class="newsletter-footer">
           <div
             id="shopify-section-footer-newsletter"
             class="shopify-section newsletter-section"
@@ -1133,7 +708,7 @@ export default function SliderDiv() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );

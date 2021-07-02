@@ -222,7 +222,7 @@ export const schema = {
                 "user_id": {
                     "name": "user_id",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -244,6 +244,48 @@ export const schema = {
                     "name": "date_modified",
                     "isArray": false,
                     "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "balance": {
+                    "name": "balance",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "is_purchased": {
+                    "name": "is_purchased",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "number_of_products": {
+                    "name": "number_of_products",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "daily_cost": {
+                    "name": "daily_cost",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "product_name": {
+                    "name": "product_name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "landmark": {
+                    "name": "landmark",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -393,5 +435,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "1f22c1cd2c853d668d5cb62b03c92d54"
+    "version": "6d95df0b0f822e93a00902a04500ce22"
 };

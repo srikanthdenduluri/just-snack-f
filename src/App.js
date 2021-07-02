@@ -1,17 +1,23 @@
-import logo from "./logo.svg";
-import React, { useEffect } from "react";
+import React from "react";
 
 import NavBar from "./NavBar";
 import SurpriseMe from "./SurpriseMe";
 import SliderDiv from "./SliderDiv";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Amplify from "aws-amplify";
+import { useHistory } from "react-router-dom";
 
 import "./App.css";
 import UserDetails from "./UserDetails";
+import useCurrentUser from "./useCurrentUser";
+import Login from "./Login";
+import MyProfile from "./MyProfile";
 
 function App() {
+  // const userStatus = useCurrentUser();
+
+  // const isLoggedIn = null !== userStatus;
+  // const history = useHistory();
   return (
     <Router>
       <div className="App">
@@ -21,9 +27,18 @@ function App() {
             <SurpriseMe />
             <Footer />
           </Route>
+          <Route path="/login">
+            {/* {isLoggedIn ? <Route exact path="/" /> : <AmplifyAuthenticator />} */}
+            <Login />
+          </Route>
           <Route path="/details">
             <NavBar />
             <UserDetails />
+            <Footer />
+          </Route>
+          <Route path="/myprofile">
+            <NavBar />
+            <MyProfile />
             <Footer />
           </Route>
           {/* <Route path="/checkout">

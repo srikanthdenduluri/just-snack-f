@@ -1,4 +1,4 @@
-type NextDayDelivery @model @auth(rules: [{ allow: public }]) {
+type NextDayDelivery @model @auth(rules: [{allow: public}]) {
   id: ID!
   user_id: Int
   product_id: Int
@@ -8,7 +8,7 @@ type NextDayDelivery @model @auth(rules: [{ allow: public }]) {
   date_modified: AWSDateTime
 }
 
-type Wallet @model @auth(rules: [{ allow: public }]) {
+type Wallet @model @auth(rules: [{allow: public}]) {
   id: ID!
   user_id: Int
   balance: Float
@@ -16,7 +16,7 @@ type Wallet @model @auth(rules: [{ allow: public }]) {
   date_modified: AWSDateTime
 }
 
-type Subscribe @model @auth(rules: [{ allow: public }]) {
+type Subscribe @model @auth(rules: [{allow: public}]) {
   id: ID!
   full_name: String
   email: String
@@ -27,9 +27,15 @@ type Subscribe @model @auth(rules: [{ allow: public }]) {
   product_id: Int
   date_added: AWSDateTime
   date_modified: AWSDateTime
+  balance: Int
+  is_purchased: Boolean
+  number_of_products: Int
+  daily_cost: Int
+  product_name: String
+  landmark: String
 }
 
-type Product @model @auth(rules: [{ allow: public }]) {
+type Product @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
   description: String
@@ -39,3 +45,4 @@ type Product @model @auth(rules: [{ allow: public }]) {
   date_added: AWSDateTime
   date_modified: AWSDateTime
 }
+ 

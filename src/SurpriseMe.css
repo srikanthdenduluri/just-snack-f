@@ -746,3 +746,7 @@ a.spr-icon:hover {
 .spr-form {
   border-color: #797979;
 }
+
+.breadcrumb {
+  background-color: white !important;
+}
