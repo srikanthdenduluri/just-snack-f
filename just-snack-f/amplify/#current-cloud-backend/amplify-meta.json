@@ -13,28 +13,7 @@
       "AuthTriggerTemplateURL": ""
     }
   },
-  "function": {
-    "test2": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "output": {
-        "Region": "ap-south-1",
-        "Arn": "arn:aws:lambda:ap-south-1:608949631405:function:test2-staging",
-        "Name": "test2-staging",
-        "LambdaExecutionRole": "justsnackfLambdaRoledddb62ad-staging"
-      },
-      "lastPushTimeStamp": "2021-06-21T16:34:33.697Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify897af4a99ca34-staging-153023-deployment/amplify-cfn-templates/function/test2-cloudformation-template.json",
-        "logicalId": "functiontest2"
-      },
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-amplify897af4a99ca34-staging-153023-deployment",
-        "s3Key": "amplify-builds/test2-76796b454851626e5963-build.zip"
-      }
-    }
-  },
+  "function": {},
   "api": {
     "justsnackf": {
       "service": "AppSync",
@@ -58,12 +37,12 @@
         "GraphQLAPIEndpointOutput": "https://r2bgshy2ubbkxdsm4cuth5yvl4.appsync-api.ap-south-1.amazonaws.com/graphql",
         "GraphQLAPIKeyOutput": "da2-vufizm57q5agvbf2bdpdzgdtjy"
       },
-      "lastPushTimeStamp": "2021-06-21T16:34:33.706Z",
+      "lastPushTimeStamp": "2021-06-28T19:18:18.532Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify897af4a99ca34-staging-153023-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apijustsnackf"
       },
-      "lastPushDirHash": "b4k6p3uleQNnVdSWJ7FOJVGLS70="
+      "lastPushDirHash": "2LgOOV5YRFQlSddtJoowUKGo8g0="
     }
   },
   "auth": {
@@ -72,11 +51,6 @@
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify897af4a99ca34-staging-153023-deployment/amplify-cfn-templates/auth/justsnackfa6ff870e-cloudformation-template.yml",
-        "logicalId": "authjustsnackfa6ff870e"
-      },
-      "lastPushTimeStamp": "2021-06-21T16:34:33.701Z",
       "output": {
         "UserPoolId": "ap-south-1_5uEK38PVu",
         "AppClientIDWeb": "pde9u8cllm09204qet62sr2lj",
@@ -86,7 +60,11 @@
         "IdentityPoolName": "justsnackfa6ff870e_identitypool_a6ff870e__staging",
         "UserPoolName": "justsnackfa6ff870e_userpool_a6ff870e"
       },
-      "lastPushDirHash": "fvoJ1KMfrIbhBEY1Xz41EKiHwDE="
+      "lastPushTimeStamp": "2021-06-28T19:18:18.525Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify897af4a99ca34-staging-153023-deployment/amplify-cfn-templates/auth/justsnackfa6ff870e-cloudformation-template.yml",
+        "logicalId": "authjustsnackfa6ff870e"
+      }
     }
   }
 }
