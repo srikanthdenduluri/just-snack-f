@@ -28,44 +28,54 @@ function SurpriseMe() {
   });
   const [show, setShow] = useState(false);
   const target = useRef(null);
-  useEffect(() => {
+
+useEffect(() => {
     async function myfunc() {
-      const temp = await DataStore.query(Subscribe, (c) =>
-        c.user_id("eq", Auth.user.username)
-      );
-      console.log("temp", temp);
-      userslist.push(temp);
-      console.log("userslist", userslist);
-      const cu = userslist[0][userslist[0].length - 1];
-      if (cu === undefined) {
-        console.log("error occured");
-        setisNoUser(true);
-        console.log("isNoUser", isNoUser);
+      try {
+        const temp = await DataStore.query(Subscribe, (c) =>
+          c.user_id("eq", Auth.user.username)
+        );
+        if (Auth.user.username === null) {
+          return null;
+        }
+        console.log("temp", temp);
+        userslist.push(temp);
+        console.log("userslist", userslist);
+        const cu = userslist[0][userslist[0].length - 1];
+        if (cu === undefined) {
+          console.log("error occured");
+          setisNoUser(true);
+          console.log("isNoUser", isNoUser);
+          return null;
+        } else {
+          setisNoUser(false);
+          console.log("isNoUser", isNoUser);
+        }
+
+        // console.log(userslist[userslist[0].length]);
+        // console.log(userslist[0][userslist[0].length - 1]);
+        currentuser.push(cu);
+        console.log("current user", currentuser);
+        console.log("current user", currentuser[0].area);
+        setData({
+          full_name: currentuser[0].full_name,
+          area: currentuser[0].area,
+          email: currentuser[0].email,
+          address: currentuser[0].address,
+          mobile: currentuser[0].mobile,
+        });
+
+        console.log(Auth.user.username);
+      } finally {
+        console.log("error finally");
         return null;
-      } else {
-        setisNoUser(false);
-        console.log("isNoUser", isNoUser);
       }
-
-      // console.log(userslist[userslist[0].length]);
-      // console.log(userslist[0][userslist[0].length - 1]);
-      currentuser.push(cu);
-      console.log("current user", currentuser);
-      console.log("current user", currentuser[0].area);
-      setData({
-        full_name: currentuser[0].full_name,
-        area: currentuser[0].area,
-        email: currentuser[0].email,
-        address: currentuser[0].address,
-        mobile: currentuser[0].mobile,
-      });
-
-      console.log(Auth.user.username);
       // const addressNewValue = document.getElementById("addressId").value;
       // console.log("addressNewValue", addressNewValue);
     }
     myfunc();
   }, []);
+  
   console.log("isNoUser outside useeffect", isNoUser);
   return (
     <div>
